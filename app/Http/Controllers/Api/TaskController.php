@@ -30,8 +30,7 @@ class TaskController extends Controller
             Task::find($task['id'])->update(['order' => $task['order']]);
         }
 
-        return response()->json('Update Successful', 200);
-        // return response()->json(null, 204);
+        return response()->json(null, 204);
     }
 
 

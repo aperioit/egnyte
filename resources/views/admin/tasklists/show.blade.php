@@ -32,7 +32,7 @@
             methods: {
                 getTaskListId() {
                     let path = window.location.pathname
-                    this.url = /\d/.exec(path)
+                    this.url = /\d+/.exec(path)
                 },
                 getTasks() {
                     axios.get(route('api.tasklists.show', this.url))

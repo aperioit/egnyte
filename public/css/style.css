@@ -15,6 +15,10 @@ a:link {
 	color: #cbb956;
 }
 
+.danger {
+	color: #721c24;
+}
+
 .flex {
 	display: flex;
 }

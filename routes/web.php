@@ -1,16 +1,43 @@
 <?php
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', 'TestController@test');
+Route::get('/taskcomplete/{id}', function ($id) {
+    $task = \App\ActiveTask::findOrFail($id);
+    $completed = !$task->complete;
+    
+    $task->complete = !$task->complete;
+    $task->save();
+
+    return back();
+});
+Route::get('/newhirecomplete/{id}', function ($id) {
+    $newhire = \App\NewHire::findOrFail($id);
+    $completed = !$newhire->completed;
+    
+    $newhire->completed = $completed;
+    if ($completed) {
+        $newhire->completed_at = \Carbon\Carbon::now();
+    } else {
+        $newhire->completed_at = NULL;
+    }
+    $newhire->save();
+
+    return back();
+});
+
+Route::get('user/{id}', function ($id) {
+    return 'User '.$id;
+});
 
 Route::get('/', 'NewHireController@index');
 

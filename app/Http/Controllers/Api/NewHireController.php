@@ -85,4 +85,17 @@ class NewHireController extends Controller
     {
         return NewHire::destroy($id);
     }
+
+    /**
+     * Update the notes of the newhire.
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function updateNotes(Request $request)
+    {
+        NewHire::find($request->id)->update(['notes' => $request['notes']]);
+
+        return response()->json(null, 204);
+    }    
 }

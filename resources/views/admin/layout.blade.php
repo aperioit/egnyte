@@ -8,10 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>{{ config('app.name', 'Laravel') }}</title> 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.css">
 
@@ -20,6 +17,7 @@
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -41,7 +39,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
+                    <li><a href="/"><i class="fas fa-home fa-lg"></i></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <!-- <li><a href="#">Logout</a></li> -->

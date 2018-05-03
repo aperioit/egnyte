@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div id="newhire" class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <h3>New Hire</h3>
@@ -35,6 +35,10 @@
                 </table>
             </ul>
 
+            <div class="panel panel-default">
+                <textarea v-model="notes" class="form-control" rows="5" @blur="updateNotes()"></textarea>
+            </div>
+
             <h3>Orders</h3>
             <ul class="list-group">
                 <table class="table table-bordered table-hover table-striped">
@@ -67,7 +71,62 @@
                     @endif
                 </table>
             </ul>
+
+            <h3>Tasks</h3>
+            <ul class="list-group" id="tasks">
+                <table class="table table-bordered table-hover table-striped">
+                    <tr>
+                        <th>Task List</th>
+                        <th>Task Name</th>
+                        <th>&nbsp;</th>
+                    </tr>
+
+                    @foreach ($newhire->activeTasks as $task)
+                        <tr>
+                            <td>
+                                {{ $task->task_list_id }}
+                            </td>
+                            <td>
+                                <b>{{ $task->task_name }}</b><br>
+                                {{ $task->task_details }}
+                            </td>
+                            <td>
+                                <a class="btn btn-default" href="/taskcomplete/{{ $task->id }}" role="button">
+                                    @if (! $task->complete)
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    @else
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    @endif
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </ul>
         </div>
     </div>
 </div>
 @endsection
+
+@section('footer_scripts')
+<script>
+    new Vue({
+        el: '#newhire',
+        data: {
+            newhire: {!! json_encode($newhire->toArray()) !!},
+            notes: ''
+        },
+        methods: {
+            updateNotes() {
+                axios.put('/api/newhire/notes', {
+                    id: this.newhire.id,
+                    notes: this.notes
+                })
+            },
+        },
+        created() {
+            this.notes = this.newhire.notes;
+        }
+    });
+</script>
+@stop

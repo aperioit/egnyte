@@ -8,7 +8,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Exo+2:400,500" rel="stylesheet">
 
     <!-- Styles -->
@@ -28,6 +27,7 @@
     </style>
 
     <!-- Scripts -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -50,27 +50,27 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <i class="fa fa-btn fa-fire"></i> Egnyte
+                    <i class="fas fa-fire"></i> Egnyte
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/newhires') }}"><i class="fa fa-home fa-lg"></i></a></li>
+                    <li><a href="{{ url('/newhires') }}"><i class="fas fa-home fa-lg"></i></a></li>
 
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{ url('/orders') }}"><i class="fa fa-btn fa-pie-chart"></i></a>
+                        <a href="{{ url('/orders') }}"><i class="fas fa-chart-pie"></i></a>
                     </li>
                     <li>
-                        <a href="{{ url('/admin') }}"><i class="fa fa-btn fa-dashboard"></i></a>
+                        <a href="{{ url('/admin') }}"><i class="fas fa-tachometer-alt"></i></a>
                     </li>
                     <li>
-                        <a href="{{ url('/positions') }}"><i class="fa fa-btn fa-diamond"></i></a>
+                        <a href="{{ url('/positions') }}"><i class="fas fa-gem"></i></a>
                     </li>
                     <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

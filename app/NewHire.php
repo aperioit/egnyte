@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class NewHire extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasSlug;
 
     /**
      * The attributes that are not mass assignable.
@@ -15,6 +17,18 @@ class NewHire extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Get the options for generating the slug.
+     *
+     * @return SlugOptions
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
 
     public function position()
     {
@@ -24,5 +38,10 @@ class NewHire extends Model
     public function assignment()
     {
         return $this->hasOne(Assignment::class);
+    }
+
+    public function activeTasks()
+    {
+        return $this->hasMany(ActiveTask::class);
     }
 }

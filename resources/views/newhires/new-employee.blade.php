@@ -49,6 +49,18 @@
                     @endif
                 </div>
 
+                <div class="form-group {{ $errors->has('notes') ? 'has-error' : '' }}">
+                    <label for="notes" class="control-label">Notes:</label>
+
+                    <textarea class="form-control" id="notes" name="notes" value="{{ old('notes') }}" rows="5"></textarea>
+
+                    @if ($errors->has('notes'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('notes') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                         <i class="fa fa-btn fa-bullhorn"></i> Announce
